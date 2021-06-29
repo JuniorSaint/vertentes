@@ -1,0 +1,54 @@
+@import '../../../shared/style/button';
+
+#formulario {
+  .campo {
+    width: 360px;
+  }
+
+  strong {
+    letter-spacing: 1px;
+  }
+
+  .tipo {
+    margin-top: 17px;
+  }
+  margin: auto;
+  margin-top: 20px;
+  max-width: 760px;
+  #form {
+    margin: 10px;
+    #tituloCat h1 {
+      font-size: 2rem;
+      text-transform: capitalize;
+      padding-top: 12px;
+      padding-left: 15px;
+      #tituloCat {
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: space-between;
+        margin-bottom: 20px;
+        border-left: solid rgb(74, 74, 78) 4px;
+        background-color: seashell;
+        margin-bottom: 50px;
+      }
+    }
+    #container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      #radio-tr {
+        display: flex;
+        flex-direction: column;
+        .radio-margin {
+          margin-left: 15px;
+        }
+        td {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}

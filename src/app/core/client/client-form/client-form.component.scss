@@ -1,0 +1,83 @@
+@import '../../../shared/style/variable';
+@import '../../../shared/style/button';
+@import '../../../shared/style/mixins';
+@import '../../../shared/style/reset';
+
+#main-div {
+  margin: auto;
+  max-width: 900px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  #main-card {
+    margin: 0 10px;
+    form {
+      .large-one {
+        width: 370px;
+      }
+      .size-complete {
+        width: 94%;
+      }
+      label {
+      }
+      #first-section {
+        @extend %flex-complete;
+        #name {
+          width: 350px;
+        }
+        #email {
+          width: 250px;
+        }
+        #social {
+          width: 250px;
+        }
+      }
+      #phone-section {
+        #list-phone {
+          @extend %flex-complete;
+          margin-top: 20px;
+          #btn-phone {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            width: 90px;
+          }
+          #phone {
+          }
+          #phoneType {
+          }
+          #btn-phone {
+            #btn-apagar-phone {
+            }
+          }
+        }
+      }
+      #address-section {
+        #address-first-line {
+          @extend %flex-complete;
+          margin-top: 20px;
+          #street {
+          }
+          #district {
+          }
+          #complement {
+          }
+        }
+        #address-second-line {
+          @extend %flex-complete;
+          #city {
+          }
+          #zipCode {
+          }
+          #UF {
+          }
+        }
+      }
+      #note-section {
+        width: 900px;
+        #note {
+        }
+      }
+    }
+  }
+}

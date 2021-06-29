@@ -1,0 +1,39 @@
+<div id="main">
+  <mat-card id="card-main">
+    <mat-card-header>
+      <mat-card-title id="title-card">{{ product.productName }}</mat-card-title>
+      <mat-card-subtitle>Subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <div id="image-div">
+      <img matCardImage src="assets/products/{{ product.imgPath }}" />
+    </div>
+    <mat-card-content>
+      <div id="shopping">
+        <div id="price-div">
+          <span class="span-price">Preço:</span
+          >{{ product.price | currency: 'BRL' }}
+          <br />
+          <span span-price>Preço Promocional:</span>
+          {{ product.priceOff | currency: 'BRL' }}
+        </div>
+        <div>
+          <div class="example-button-container">
+            <button mat-fab color="warn">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-tab-group>
+        <mat-tab label="Descrição">
+          <div id="note-div">
+            <mat-card>
+              {{ product.description }}
+            </mat-card>
+          </div>
+        </mat-tab>
+        <mat-tab label="Onde Fica"> </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

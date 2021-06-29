@@ -1,0 +1,38 @@
+<div id="main">
+  <div id="container">
+    <mat-card id="card-div">
+      <form [formGroup]="formulario">
+        <div>
+          <mat-form-field id="client-input" appearance="outline">
+            <mat-label>Cliente</mat-label>
+            <mat-select formControlName="_idClient">
+              <mat-option
+                *ngFor="let item of clientOnlyName$"
+                value="{{ item._id }}"
+              >
+                {{ item.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label> tipo Pagamento </mat-label>
+            <mat-select formControlName="typePay">
+              <mat-option
+                *ngFor="let item of typePay"
+                value="{{ item.valuePay }}"
+              >
+                {{ item.typePay }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button (click)="onSubmit()" mat-raised-button color="primary">
+              salvar
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

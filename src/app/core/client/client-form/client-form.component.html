@@ -1,0 +1,184 @@
+<div id="main-div">
+  <mat-card id="main-card">
+    <form [formGroup]="formulario">
+      <section id="first-section">
+        <mat-form-field class="large-one" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput id="name" type="text" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input id="email" type="email" matInput formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+          <input
+            id="cpf"
+            mask="CPF_CNPJ"
+            type="text"
+            formControlName="cpf"
+            matInput
+          />
+        </mat-form-field>
+      </section>
+      <!-- Lista de Telefones  -->
+      <section formArrayName="phone" id="phone-section">
+        <h3>Telefone</h3>
+        <div
+          *ngFor="let forServico of phoneFormControl.controls; let i = index"
+          [formGroupName]="i"
+          id="list-phone"
+        >
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input
+              id="phone"
+              mask="(000) 0000-0000 || (000) 00000-0000"
+              formControlName="phoneNumber"
+              type="text"
+              matInput
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>tipo de telefone</mat-label>
+            <mat-select formControlName="phoneType" id="phoneType">
+              <mat-option
+                *ngFor="let item of phoneType"
+                value="{{ item.value }}"
+              >
+                {{ item.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>tipo de telefone</mat-label>
+            <mat-select formControlName="social" id="social">
+              <mat-option *ngFor="let item of social" value="{{ item.value }}">
+                {{ item.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div id="btn-phone">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-plus"
+              class="p-button-rounded p-button-success btn-tel"
+              (click)="newPhone()"
+              pTooltip="Adicione novo número"
+            ></button>
+
+            <button
+              id="btn-apagar-phone"
+              pButton
+              pRipple
+              type="button"
+              (click)="removeTelefone(i)"
+              pTooltip="Apaga o telefone"
+              *ngIf="phoneFormControl.length > 1"
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-danger btn-tel"
+            ></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Parte do cadastramento do endereço  -->
+      <section id="address-section">
+        <div formGroupName="address">
+          <div id="address-first-line">
+            <mat-form-field class="large-one" appearance="outline">
+              <mat-label>Rua</mat-label>
+              <input
+                id="street"
+                formControlName="street"
+                type="text"
+                matInput
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Bairro</mat-label>
+              <input
+                id="district"
+                formControlName="district"
+                type="text"
+                matInput
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Complemento</mat-label>
+              <input
+                id="complement"
+                formControlName="complement"
+                type="text"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+          <div id="address-second-line">
+            <mat-form-field class="large-one" appearance="outline">
+              <mat-label>Cidade</mat-label>
+              <input matInput id="city" formControlName="city" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>CEP</mat-label>
+              <input
+                matInput
+                id="zipCode"
+                formControlName="zipCode"
+                mask="00.000-000"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Estado</mat-label>
+              <mat-select formControlName="UF">
+                <mat-option *ngFor="let item of UF" value="{{ item.sigla }}">
+                  {{ item.sigla }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </section>
+      <!-- Campo Observação  -->
+      <section id="note-section">
+        <mat-form-field class="size-complete" appearance="outline">
+          <mat-label>Observação</mat-label>
+          <textarea formControlName="note" id="note" matInput></textarea>
+        </mat-form-field>
+      </section>
+    </form>
+
+    <div>
+      <button
+        (click)="onSubmit()"
+        pTooltip="Salvar documento"
+        [disabled]="formulario.invalid"
+        icon="pi pi-save"
+        class="btn-save"
+      >
+        {{ txtBtn }}
+      </button>
+
+      <button
+        class="btn-return"
+        (click)="btnVoltar()"
+        pTooltip="Volta a lista"
+        icon="pi pi-backward"
+        id="btn-voltar"
+      >
+        Voltar
+      </button>
+    </div>
+  </mat-card>
+</div>

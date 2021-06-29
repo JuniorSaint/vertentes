@@ -1,0 +1,87 @@
+<div id="main-div">
+  <p-table [value]="dataSource$">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <button class="btn-create" [routerLink]="['/product/new']">Novo</button>
+        <div>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input
+              type="text"
+              pInputText
+              #searchValue
+              (keyup)="search(searchValue.value)"
+              placeholder="Search"
+            />
+          </span>
+        </div>
+        {{ searchInput }}
+        <button class="btn-create">Atualizar</button>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Produto</th>
+        <th>Imagem</th>
+        <th>Preço</th>
+        <th>Tipo</th>
+        <th>Ativo</th>
+        <th>Promoção</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.productName }}</td>
+        <td>
+          <img
+            [src]="'assets/products/' + product.imgPath"
+            [alt]="product.ProductName"
+            width="100"
+            class="p-shadow-4"
+          />
+        </td>
+        <td>
+          <span class="price-view">Preço:</span>
+          {{ product.price | currency: 'BRL' }} <br />
+          <span class="price-view">Promoção:</span>
+          {{ product.priceOff | currency: 'BRL' }}
+        </td>
+        <td>{{ product.typeProduct }}</td>
+        <td>
+          {{ product.isActive === true ? 'Ativo' : 'Inativo' }}
+        </td>
+        <td>
+          {{ product.isOnSale === true ? 'Na Promoção' : 'Fora da Promoção' }}
+        </td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            (click)="edit(product._id)"
+            class="p-button-rounded p-button-success"
+            pTooltip="Editar formulário"
+            style="background-color: #33f5ff; color: black"
+          ></button>
+
+          <button
+            pButton
+            (click)="delete(product._id)"
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+            style="margin-left: 5px"
+            pTooltip="Apagar formulário"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">Total de produtos .</div>
+    </ng-template>
+  </p-table>
+</div>

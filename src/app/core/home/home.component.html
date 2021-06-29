@@ -1,0 +1,42 @@
+<div id="main">
+  <div *ngFor="let item of productList$">
+    <mat-card id="card-main">
+      <mat-card-header>
+        <mat-card-title id="title-card">{{ item.productName }}</mat-card-title>
+        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      </mat-card-header>
+      <div id="image-div">
+        <img matCardImage src="assets/products/{{ item.imgPath }}" />
+      </div>
+      <mat-card-content>
+        <div id="shopping">
+          <div id="price-div">
+            <span class="span-price">Preço:</span
+            >{{ item.price | currency: 'BRL' }}
+            <br />
+            <span span-price>Preço Promocional:</span>
+            {{ item.priceOff | currency: 'BRL' }}
+          </div>
+          <div>
+            <div class="example-button-container">
+              <button mat-fab color="warn">
+                <mat-icon>shopping_cart</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="start"> </mat-card-actions>
+      <mat-card-footer id="footer">
+        <button
+          id="btn-detail"
+          mat-raised-button
+          color="primary"
+          (click)="detailProduct(item._id)"
+        >
+          Detalhes do Produto
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

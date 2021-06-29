@@ -1,0 +1,47 @@
+<main>
+  <div id="main-div">
+    <p-card id="main-card">
+      <form [formGroup]="formulario">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div id="header-card">
+              <div>
+                <p id="p-title">{{ pageTitle }}</p>
+              </div>
+              <div></div>
+            </div>
+          </ng-template>
+
+          <div id="input-div">
+            <span class="p-float-label">
+              <input
+                id="name"
+                type="text"
+                pInputText
+                formControlName="productType"
+              />
+              <label for="name">Tipo de Produto</label>
+            </span>
+
+            <div>
+              <button
+                class="btn-save"
+                pButton
+                pRipple
+                [disabled]="formulario.invalid"
+                (click)="onSubmit()"
+                type="button"
+                label="{{ txtBtn }}"
+              ></button>
+            </div>
+          </div>
+        </p-card>
+      </form>
+      <div style="margin-top: 10px">
+        <p-card>
+          <app-product-type-list></app-product-type-list>
+        </p-card>
+      </div>
+    </p-card>
+  </div>
+</main>

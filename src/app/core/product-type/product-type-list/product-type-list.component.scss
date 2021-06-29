@@ -1,0 +1,11 @@
+@import '../../../shared/style/button';
+
+#header-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+#p-title {
+  letter-spacing: 2px;
+  font-size: 1.7rem;
+}

@@ -1,0 +1,207 @@
+<div id="formulario">
+  <form [formGroup]="formulario" id="form">
+    <mat-card class="card">
+      <mat-card-header>
+        <div id="tituloCat">
+          <h1>
+            {{ pageTitle }}
+          </h1>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div id="container">
+          <table>
+            <tr>
+              <td>
+                <mat-form-field class="campo">
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="Código"
+                    formControlName="code"
+                    autocomplete="off"
+                    required
+                  />
+                  <mat-error
+                    *ngIf="formulario.controls.code.hasError('required')"
+                  >
+                    <p>Campo código é <strong> Obrigatório </strong></p>
+                  </mat-error>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-form-field class="campo">
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="Produto"
+                    formControlName="productName"
+                    autocomplete="off"
+                    required
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <mat-form-field class="campo">
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="Marca"
+                    formControlName="brand"
+                    autocomplete="off"
+                    required
+                  />
+                  <mat-error
+                    *ngIf="formulario.controls.brand.hasError('required')"
+                  >
+                    <p>Campo tipo é <strong> Obrigatório </strong></p>
+                  </mat-error>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-form-field class="campo">
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="Imagem"
+                    formControlName="imgPath"
+                    autocomplete="off"
+                    required
+                  />
+                  <mat-error
+                    *ngIf="formulario.controls.imgPath.hasError('required')"
+                  >
+                    <p>Campo ativo é <strong> Obrigatório </strong></p>
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <mat-form-field class="campo">
+                  <input
+                    matInput
+                    currencyMask
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                    formControlName="price"
+                    placeholder="Preço"
+                    autocomplete="off"
+                    required
+                  />
+                  <mat-error
+                    *ngIf="formulario.controls.price.hasError('required')"
+                  >
+                    <p>Campo preço é <strong> Obrigatório </strong></p>
+                  </mat-error>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-form-field class="campo">
+                  <input
+                    matInput
+                    currencyMask
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                    placeholder="Preço de Promoção"
+                    formControlName="priceOff"
+                    autocomplete="off"
+                    required
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <mat-form-field class="campo">
+                  <mat-label>Descrição</mat-label>
+                  <textarea
+                    matInput
+                    placeholder="Descrição do Produto"
+                    formControlName="description"
+                  ></textarea>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-form-field class="tipo" appearance="fill">
+                  <mat-label>Tipo</mat-label>
+                  <select
+                    matNativeControl
+                    required
+                    formControlName="typeProduct"
+                  >
+                    <option
+                      *ngFor="let item of productType$"
+                      value="{{ item._id }}"
+                    >
+                      {{ item.productType }}
+                    </option>
+                  </select>
+                  <mat-error
+                    *ngIf="formulario.controls.typeProduct.hasError('required')"
+                  >
+                    <p>Campo tipo é <strong> Obrigatório </strong></p>
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+
+            <tr id="radio-tr">
+              <td>
+                <section class="example-section">
+                  <label class="label-radio">Esta na Promoção</label>
+                  <mat-radio-group formControlName="isOnSale">
+                    <mat-radio-button class="radio-margin" value="true">
+                      Sim
+                    </mat-radio-button>
+                    <mat-radio-button class="radio-margin" value="false">
+                      Não
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </section>
+              </td>
+
+              <td>
+                <section class="example-section">
+                  <label class="label-radio">Produto Ativo</label>
+                  <mat-radio-group formControlName="isActive">
+                    <mat-radio-button class="radio-margin" value="{{ true }}">
+                      Sim
+                    </mat-radio-button>
+                    <mat-radio-button class="radio-margin" value="{{ false }}">
+                      Não
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </section>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-chip-list class="botao" aria-label="Fish selection">
+          <button
+            class="btn-save"
+            (click)="onSubmit()"
+            [disabled]="!formulario.valid"
+            color="primary"
+          >
+            {{ txtBtn }}
+          </button>
+          <button class="btn-return" (click)="btnVoltar()" color="accent">
+            Voltar
+          </button>
+        </mat-chip-list>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
